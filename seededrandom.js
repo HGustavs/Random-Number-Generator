@@ -1,8 +1,9 @@
 
 function jsf32(a, b, c, d) {
   a |= 0; b |= 0; c |= 0; d |= 0;
-  var t = a - (b << 27 | b >>> 5) | 0;
-  a = b ^ (c << 17 | c >>> 15);
+  var t = a - (b << 23 | b >>> 9) | 0;
+  a = b ^ (c << 16 | c >>> 16) | 0;
+  b = c + (d << 11 | d >>> 21) | 0;
   b = c + d | 0;
   c = d + t | 0;
   d = a + t | 0;
@@ -10,12 +11,14 @@ function jsf32(a, b, c, d) {
 }
 
 Math.random = function() {
-Math.randSeed+=73;
-return(jsf32(Math.randSeed,Math.randSeed+671,Math.randSeed+1889,Math.randSeed+56781))
+    var ran=jsf32(0xF1EA5EED,Math.randSeed+6871,Math.randSeed+1889,Math.randSeed+56781);
+    Math.randSeed+=Math.floor(ran*37237);
+    return(ran)
 }
 
 Math.setSeed = function(seed){
-Math.randSeed=seed;
+    Math.randSeed=seed;
+    for(var i=0;i<7;i++) Math.random();
 }
 
 var origRandom = Math.random;

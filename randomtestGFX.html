@@ -1,0 +1,29 @@
+<html>
+  <script src="seededrandom.js"></script>    
+<script>
+
+str="";
+
+function startup(){
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+
+    for(var j=0;j<500;j++){
+        Math.setSeed(j+200);
+        for(var i=0;i<500;i++){
+            var r=Math.floor(Math.random()*255);
+            ctx.fillStyle = "RGB("+r+","+r+","+r+")";
+            ctx.fillRect(i*4,j*4,4,4);
+        }
+    }
+}
+
+</script>
+<body onload="startup();">
+
+  <canvas id="myCanvas" width="2000" height="2000" style="border:1px dotted red;">
+  </canvas>
+</body>
+</html>
+
