@@ -1,4 +1,11 @@
 
+/*
+For reference sfc from stack overflow and practrand
+----------=======################========-----------
+https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
+https://pracrand.sourceforge.net/
+*/
+
 function jsf32(a, b, c, d) {
   a |= 0; b |= 0; c |= 0; d |= 0;
   var t = a - (b << 23 | b >>> 9) | 0;

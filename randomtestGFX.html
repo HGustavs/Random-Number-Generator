@@ -10,7 +10,7 @@ function startup(){
 
 
     for(var j=0;j<500;j++){
-        Math.setSeed(j+200);
+        Math.setSeed(j);
         for(var i=0;i<500;i++){
             var r=Math.floor(Math.random()*255);
             ctx.fillStyle = "RGB("+r+","+r+","+r+")";
